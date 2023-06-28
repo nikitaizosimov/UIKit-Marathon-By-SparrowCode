@@ -11,6 +11,7 @@
 		7B9624502A7E221A0044CE6E /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B96244F2A7E221A0044CE6E /* MainController.swift */; };
 		7B9624552A7E221B0044CE6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B9624542A7E221B0044CE6E /* Assets.xcassets */; };
 		7B9624582A7E221B0044CE6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B9624562A7E221B0044CE6E /* LaunchScreen.storyboard */; };
+		7B9624652A7E43370044CE6E /* MainCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624642A7E43370044CE6E /* MainCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		7B9624542A7E221B0044CE6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B9624572A7E221B0044CE6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B9624592A7E221B0044CE6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B9624642A7E43370044CE6E /* MainCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +82,18 @@
 		7B9624612A7E24A70044CE6E /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				7B9624632A7E432E0044CE6E /* Views */,
 				7B96244F2A7E221A0044CE6E /* MainController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		7B9624632A7E432E0044CE6E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7B9624642A7E43370044CE6E /* MainCollectionCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B9624502A7E221A0044CE6E /* MainController.swift in Sources */,
+				7B9624652A7E43370044CE6E /* MainCollectionCell.swift in Sources */,
 				7B96244C2A7E221A0044CE6E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
