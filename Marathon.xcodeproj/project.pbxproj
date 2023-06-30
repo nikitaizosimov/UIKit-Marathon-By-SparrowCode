@@ -63,8 +63,9 @@
 		7B96245F2A7E24630044CE6E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7B9624612A7E24A70044CE6E /* Main */,
 				7B96244B2A7E221A0044CE6E /* AppDelegate.swift */,
+				7B9624612A7E24A70044CE6E /* Main */,
+				7B9624662A7E45BC0044CE6E /* GradientAndShadow */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -94,6 +95,13 @@
 				7B9624642A7E43370044CE6E /* MainCollectionCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7B9624662A7E45BC0044CE6E /* GradientAndShadow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GradientAndShadow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

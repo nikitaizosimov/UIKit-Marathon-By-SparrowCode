@@ -7,7 +7,7 @@
 
 import UIKit
 
-// 37
+// 35
 
 class MainController: UICollectionViewController {
     
@@ -15,19 +15,26 @@ class MainController: UICollectionViewController {
     
     typealias Project = (name: String, controller: UIViewController)
     
-    let projects: [String] = ["1 ", "2", "3", "4", "5", "6", "7", "8", "9"]
+    let projects: [Project] = [
+        ("1. Градиент и Тень", UIViewController()),
+        ("1. Градиент и Тень", UIViewController()),
+        ("1. Градиент и Тень", UIViewController()),
+        ("1. Градиент и Тень", UIViewController()),
+        ("1. Градиент и Тень", UIViewController()),
+        ("1. Градиент и Тень", UIViewController()),
+        ("1. Градиент и Тень", UIViewController()),
+        ("1. Градиент и Тень", UIViewController()),
+        ("1. Градиент и Тень", UIViewController()),
+    ]
     
     private lazy var section: NSCollectionLayoutSection = {
         let size: NSCollectionLayoutSize = .init(widthDimension: .fractionalWidth(1),
                                                  heightDimension: .estimated(40))
-        
         let item = NSCollectionLayoutItem(layoutSize: size)
-        
         let group = NSCollectionLayoutGroup.vertical(
             layoutSize: size,
             subitems: [item]
         )
-        
         let section = NSCollectionLayoutSection(group: group)
         
         section.interGroupSpacing = 8
@@ -59,7 +66,6 @@ class MainController: UICollectionViewController {
         view.backgroundColor = .white
         
         collectionView.collectionViewLayout = UICollectionViewCompositionalLayout(section: section)
-        
         collectionView.register(MainCollectionCell.self, forCellWithReuseIdentifier: "MainCollectionCell")
     }
     
@@ -82,7 +88,7 @@ class MainController: UICollectionViewController {
             return reusableCell
         }
         
-        cell.textLabel.text = projects[indexPath.row]
+        cell.textLabel.text = projects[indexPath.row].name
         
         return cell
     }
