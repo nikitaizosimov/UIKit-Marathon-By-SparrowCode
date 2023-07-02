@@ -13,19 +13,7 @@ class MainController: UICollectionViewController {
     
     // MARK: - Properties
     
-    typealias Project = (name: String, controller: UIViewController)
-    
-    let projects: [Project] = [
-        ("1. Градиент и Тень", UIViewController()),
-        ("1. Градиент и Тень", UIViewController()),
-        ("1. Градиент и Тень", UIViewController()),
-        ("1. Градиент и Тень", UIViewController()),
-        ("1. Градиент и Тень", UIViewController()),
-        ("1. Градиент и Тень", UIViewController()),
-        ("1. Градиент и Тень", UIViewController()),
-        ("1. Градиент и Тень", UIViewController()),
-        ("1. Градиент и Тень", UIViewController()),
-    ]
+    let projectList = Project.allCases
     
     private lazy var section: NSCollectionLayoutSection = {
         let size: NSCollectionLayoutSize = .init(widthDimension: .fractionalWidth(1),
@@ -75,7 +63,7 @@ class MainController: UICollectionViewController {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        projects.count
+        projectList.count
     }
     
     override func collectionView(
@@ -88,7 +76,7 @@ class MainController: UICollectionViewController {
             return reusableCell
         }
         
-        cell.textLabel.text = projects[indexPath.row].name
+        cell.textLabel.text = projectList[indexPath.row].name
         
         return cell
     }

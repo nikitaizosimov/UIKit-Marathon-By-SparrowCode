@@ -12,6 +12,7 @@
 		7B9624552A7E221B0044CE6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B9624542A7E221B0044CE6E /* Assets.xcassets */; };
 		7B9624582A7E221B0044CE6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B9624562A7E221B0044CE6E /* LaunchScreen.storyboard */; };
 		7B9624652A7E43370044CE6E /* MainCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624642A7E43370044CE6E /* MainCollectionCell.swift */; };
+		7B9624692A7FACBF0044CE6E /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624682A7FACBF0044CE6E /* Project.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		7B9624572A7E221B0044CE6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B9624592A7E221B0044CE6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B9624642A7E43370044CE6E /* MainCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionCell.swift; sourceTree = "<group>"; };
+		7B9624682A7FACBF0044CE6E /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		7B9624612A7E24A70044CE6E /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				7B9624672A7FACAB0044CE6E /* DM */,
 				7B9624632A7E432E0044CE6E /* Views */,
 				7B96244F2A7E221A0044CE6E /* MainController.swift */,
 			);
@@ -102,6 +105,14 @@
 			children = (
 			);
 			path = GradientAndShadow;
+			sourceTree = "<group>";
+		};
+		7B9624672A7FACAB0044CE6E /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				7B9624682A7FACBF0044CE6E /* Project.swift */,
+			);
+			path = DM;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +188,7 @@
 				7B9624502A7E221A0044CE6E /* MainController.swift in Sources */,
 				7B9624652A7E43370044CE6E /* MainCollectionCell.swift in Sources */,
 				7B96244C2A7E221A0044CE6E /* AppDelegate.swift in Sources */,
+				7B9624692A7FACBF0044CE6E /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
