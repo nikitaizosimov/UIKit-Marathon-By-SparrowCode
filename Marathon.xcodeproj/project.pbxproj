@@ -13,6 +13,11 @@
 		7B9624582A7E221B0044CE6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B9624562A7E221B0044CE6E /* LaunchScreen.storyboard */; };
 		7B9624652A7E43370044CE6E /* MainCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624642A7E43370044CE6E /* MainCollectionCell.swift */; };
 		7B9624692A7FACBF0044CE6E /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624682A7FACBF0044CE6E /* Project.swift */; };
+		7B96246B2A7FAD6C0044CE6E /* GradientAndShadowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B96246A2A7FAD6C0044CE6E /* GradientAndShadowController.swift */; };
+		7B96246E2A7FADF00044CE6E /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B96246D2A7FADF00044CE6E /* SquareView.swift */; };
+		7B9624712A7FAE280044CE6E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624702A7FAE280044CE6E /* UIColor+Extension.swift */; };
+		7B9624742A7FAE410044CE6E /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624732A7FAE410044CE6E /* Gradient.swift */; };
+		7B9624762A7FAE5D0044CE6E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624752A7FAE5D0044CE6E /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		7B9624592A7E221B0044CE6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B9624642A7E43370044CE6E /* MainCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionCell.swift; sourceTree = "<group>"; };
 		7B9624682A7FACBF0044CE6E /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		7B96246A2A7FAD6C0044CE6E /* GradientAndShadowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientAndShadowController.swift; sourceTree = "<group>"; };
+		7B96246D2A7FADF00044CE6E /* SquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
+		7B9624702A7FAE280044CE6E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		7B9624732A7FAE410044CE6E /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
+		7B9624752A7FAE5D0044CE6E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				7B96245F2A7E24630044CE6E /* Controllers */,
+				7B96246F2A7FAE0F0044CE6E /* Helpers */,
 				7B9624602A7E24850044CE6E /* SupportingFiles */,
 			);
 			path = Marathon;
@@ -103,6 +114,8 @@
 		7B9624662A7E45BC0044CE6E /* GradientAndShadow */ = {
 			isa = PBXGroup;
 			children = (
+				7B96246C2A7FADE30044CE6E /* Views */,
+				7B96246A2A7FAD6C0044CE6E /* GradientAndShadowController.swift */,
 			);
 			path = GradientAndShadow;
 			sourceTree = "<group>";
@@ -113,6 +126,24 @@
 				7B9624682A7FACBF0044CE6E /* Project.swift */,
 			);
 			path = DM;
+			sourceTree = "<group>";
+		};
+		7B96246C2A7FADE30044CE6E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7B96246D2A7FADF00044CE6E /* SquareView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7B96246F2A7FAE0F0044CE6E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7B9624732A7FAE410044CE6E /* Gradient.swift */,
+				7B9624702A7FAE280044CE6E /* UIColor+Extension.swift */,
+				7B9624752A7FAE5D0044CE6E /* UIView+Extension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,10 +216,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B9624712A7FAE280044CE6E /* UIColor+Extension.swift in Sources */,
 				7B9624502A7E221A0044CE6E /* MainController.swift in Sources */,
+				7B96246B2A7FAD6C0044CE6E /* GradientAndShadowController.swift in Sources */,
+				7B9624762A7FAE5D0044CE6E /* UIView+Extension.swift in Sources */,
 				7B9624652A7E43370044CE6E /* MainCollectionCell.swift in Sources */,
+				7B96246E2A7FADF00044CE6E /* SquareView.swift in Sources */,
 				7B96244C2A7E221A0044CE6E /* AppDelegate.swift in Sources */,
 				7B9624692A7FACBF0044CE6E /* Project.swift in Sources */,
+				7B9624742A7FAE410044CE6E /* Gradient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

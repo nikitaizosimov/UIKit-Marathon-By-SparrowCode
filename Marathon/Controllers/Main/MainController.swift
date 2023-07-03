@@ -7,9 +7,9 @@
 
 import UIKit
 
-// 35
+// 34
 
-class MainController: UICollectionViewController {
+final class MainController: UICollectionViewController {
     
     // MARK: - Properties
     
@@ -34,6 +34,7 @@ class MainController: UICollectionViewController {
     
     init() { super.init(collectionViewLayout: UICollectionViewFlowLayout()) }
     
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -79,5 +80,13 @@ class MainController: UICollectionViewController {
         cell.textLabel.text = projectList[indexPath.row].name
         
         return cell
+    }
+    
+    override func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        let controller = projectList[indexPath.row].controller
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

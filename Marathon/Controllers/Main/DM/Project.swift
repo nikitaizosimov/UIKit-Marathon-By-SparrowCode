@@ -28,7 +28,7 @@ enum Project: CaseIterable {
     var controller: UIViewController {
         switch self {
         case .gradientAndShadow:
-            return UIViewController()
+            return GradientAndShadowController()
         }
     }
 }
