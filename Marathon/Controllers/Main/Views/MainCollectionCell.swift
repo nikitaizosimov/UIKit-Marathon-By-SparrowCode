@@ -32,10 +32,10 @@ final class MainCollectionCell: UICollectionViewCell {
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            textLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            textLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
+            textLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            textLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
             textLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16),
-            textLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+            textLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
         ])
     }
 }
