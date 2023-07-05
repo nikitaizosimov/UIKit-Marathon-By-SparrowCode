@@ -18,6 +18,8 @@
 		7B9624712A7FAE280044CE6E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624702A7FAE280044CE6E /* UIColor+Extension.swift */; };
 		7B9624742A7FAE410044CE6E /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624732A7FAE410044CE6E /* Gradient.swift */; };
 		7B9624762A7FAE5D0044CE6E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624752A7FAE5D0044CE6E /* UIView+Extension.swift */; };
+		7B9624792A7FB1900044CE6E /* ThreeButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624782A7FB1900044CE6E /* ThreeButtonController.swift */; };
+		7B96247B2A7FB20F0044CE6E /* TransformButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B96247A2A7FB20F0044CE6E /* TransformButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		7B9624702A7FAE280044CE6E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		7B9624732A7FAE410044CE6E /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		7B9624752A7FAE5D0044CE6E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		7B9624782A7FB1900044CE6E /* ThreeButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeButtonController.swift; sourceTree = "<group>"; };
+		7B96247A2A7FB20F0044CE6E /* TransformButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 				7B96244B2A7E221A0044CE6E /* AppDelegate.swift */,
 				7B9624612A7E24A70044CE6E /* Main */,
 				7B9624662A7E45BC0044CE6E /* GradientAndShadow */,
+				7B9624772A7FB1790044CE6E /* ThreeButton */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -140,10 +145,19 @@
 			isa = PBXGroup;
 			children = (
 				7B9624732A7FAE410044CE6E /* Gradient.swift */,
+				7B96247A2A7FB20F0044CE6E /* TransformButton.swift */,
 				7B9624702A7FAE280044CE6E /* UIColor+Extension.swift */,
 				7B9624752A7FAE5D0044CE6E /* UIView+Extension.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7B9624772A7FB1790044CE6E /* ThreeButton */ = {
+			isa = PBXGroup;
+			children = (
+				7B9624782A7FB1900044CE6E /* ThreeButtonController.swift */,
+			);
+			path = ThreeButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,9 +230,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B9624792A7FB1900044CE6E /* ThreeButtonController.swift in Sources */,
 				7B9624712A7FAE280044CE6E /* UIColor+Extension.swift in Sources */,
 				7B9624502A7E221A0044CE6E /* MainController.swift in Sources */,
 				7B96246B2A7FAD6C0044CE6E /* GradientAndShadowController.swift in Sources */,
+				7B96247B2A7FB20F0044CE6E /* TransformButton.swift in Sources */,
 				7B9624762A7FAE5D0044CE6E /* UIView+Extension.swift in Sources */,
 				7B9624652A7E43370044CE6E /* MainCollectionCell.swift in Sources */,
 				7B96246E2A7FADF00044CE6E /* SquareView.swift in Sources */,
