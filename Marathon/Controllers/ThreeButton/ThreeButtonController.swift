@@ -48,6 +48,7 @@ final class ThreeButtonController: UIViewController {
     // MARK: - Setup Views
     
     private func setupViews() {
+        view.backgroundColor = .white
         view.addSubview(buttonsStackView)
         
         buttonsStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -77,5 +78,36 @@ final class ThreeButtonController: UIViewController {
         controller.view.backgroundColor = .white
         
         present(controller, animated: true)
+    }
+}
+
+private extension UIButton.Configuration {
+    
+    static func filled(title: String) -> Self {
+        var configuration = filled()
+        
+        configuration.title = title
+        configuration.image = UIImage(systemName: "arrow.right.circle.fill")
+        
+        configuration.imagePlacement = .trailing
+        configuration.imagePadding = 8
+        
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 14)
+        
+        return configuration
+    }
+}
+
+private extension UIButton {
+    
+    static let blueFillUpdateHandler: UIButton.ConfigurationUpdateHandler = { button in
+        switch button.tintAdjustmentMode {
+        case .dimmed:
+            button.configuration?.background.backgroundColor = .systemGray
+            button.configuration?.baseForegroundColor = .systemGray2
+        default:
+            button.configuration?.background.backgroundColor = .systemBlue
+            button.configuration?.baseForegroundColor = .white
+        }
     }
 }

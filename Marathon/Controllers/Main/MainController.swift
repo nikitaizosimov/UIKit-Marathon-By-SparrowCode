@@ -7,7 +7,7 @@
 
 import UIKit
 
-// 33
+// 31
 
 final class MainController: UICollectionViewController {
     

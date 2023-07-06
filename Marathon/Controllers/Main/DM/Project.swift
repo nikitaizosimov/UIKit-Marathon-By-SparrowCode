@@ -40,7 +40,7 @@ enum Project: CaseIterable {
         case .gradientAndShadow:
             return GradientAndShadowController()
         case .threeButton:
-            return UIViewController()
+            return ThreeButtonController()
         }
     }
 }
