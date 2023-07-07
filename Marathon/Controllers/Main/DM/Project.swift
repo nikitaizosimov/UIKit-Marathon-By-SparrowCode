@@ -11,6 +11,7 @@ enum Project: CaseIterable {
     
     case gradientAndShadow
     case threeButton
+    case relatedAnimation
     
     var name: String {
         switch self {
@@ -18,6 +19,8 @@ enum Project: CaseIterable {
             return "1. Градиент и тень"
         case .threeButton:
             return "2. Три кнопки"
+        case .relatedAnimation:
+            return "3. Связанная анимация"
         }
     }
     
@@ -32,6 +35,12 @@ enum Project: CaseIterable {
                     - Справа от текста поставить иконку. Использовать системный imageView в классе кнопки, создавать свою imageView нельзя. Расстояние между текстом и иконкой 8pt.
                     - Когда показывается модальный контроллер, кнопки должны закрашиваться серым. Нельзя привязываться к методам жизненного цикла контроллера.
                     """
+        case .relatedAnimation:
+            return """
+                    - В конечной точке вью должна быть справа (минус отступ), увеличится в 1.5 раза и повернуться на 90 градусов.
+                    - Когда отпускаем слайдер, анимация идет до конца с текущего места.
+                    - Слева и справа отступы layout margins. Отступ как для квадратной вью, так и для слайдера.
+                    """
         }
     }
     
@@ -41,6 +50,8 @@ enum Project: CaseIterable {
             return GradientAndShadowController()
         case .threeButton:
             return ThreeButtonController()
+        case .relatedAnimation:
+            return UIViewController()
         }
     }
 }
