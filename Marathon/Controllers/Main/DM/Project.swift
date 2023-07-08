@@ -51,7 +51,7 @@ enum Project: CaseIterable {
         case .threeButton:
             return ThreeButtonController()
         case .relatedAnimation:
-            return UIViewController()
+            return RelatedAnimationController()
         }
     }
 }
