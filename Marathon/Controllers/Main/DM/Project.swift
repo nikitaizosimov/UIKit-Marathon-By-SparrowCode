@@ -12,6 +12,7 @@ enum Project: CaseIterable {
     case gradientAndShadow
     case threeButton
     case relatedAnimation
+    case mixerTable
     
     var name: String {
         switch self {
@@ -21,6 +22,8 @@ enum Project: CaseIterable {
             return "2. Три кнопки"
         case .relatedAnimation:
             return "3. Связанная анимация"
+        case .mixerTable:
+            return "4. Миксер-Таблица"
         }
     }
     
@@ -41,6 +44,12 @@ enum Project: CaseIterable {
                     - Когда отпускаем слайдер, анимация идет до конца с текущего места.
                     - Слева и справа отступы layout margins. Отступ как для квадратной вью, так и для слайдера.
                     """
+        case .mixerTable:
+            return """
+                    - По нажатию на ячейку она анимировано перемещается на первое место, а справа появляется галочка.
+                    - Если нажать на ячейку с галочкой, то галочка пропадает.
+                    - Справа вверху кнопка анимировано перемешивает ячейки.
+                    """
         }
     }
     
@@ -52,6 +61,8 @@ enum Project: CaseIterable {
             return ThreeButtonController()
         case .relatedAnimation:
             return RelatedAnimationController()
+        case .mixerTable:
+            return UIViewController()
         }
     }
 }
