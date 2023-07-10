@@ -62,7 +62,7 @@ enum Project: CaseIterable {
         case .relatedAnimation:
             return RelatedAnimationController()
         case .mixerTable:
-            return UIViewController()
+            return MixerTableController()
         }
     }
 }
