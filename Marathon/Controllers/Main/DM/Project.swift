@@ -13,6 +13,7 @@ enum Project: CaseIterable {
     case threeButton
     case relatedAnimation
     case mixerTable
+    case compactController
     
     var name: String {
         switch self {
@@ -24,6 +25,8 @@ enum Project: CaseIterable {
             return "3. Связанная анимация"
         case .mixerTable:
             return "4. Миксер-Таблица"
+        case .compactController:
+            return "5. Компактный Контроллер"
         }
     }
     
@@ -50,6 +53,14 @@ enum Project: CaseIterable {
                     - Если нажать на ячейку с галочкой, то галочка пропадает.
                     - Справа вверху кнопка анимировано перемешивает ячейки.
                     """
+        case .compactController:
+            return """
+                    - Контроллер открывается не на весь экран. Ширина всегда 300pt.
+                    - По умолчанию выбран первый пункт с высотой 280pt. Если выбрать второй пункт - высота станет 150pt. Высота меняется анимировано.
+                    - Кнопка закрыть в правом верхнем углу закрывает контроллер.
+                    - Контроллер сверху привязан к центру кнопки треугольничком (см. видео).
+                    """
+            
         }
     }
     
@@ -63,6 +74,8 @@ enum Project: CaseIterable {
             return RelatedAnimationController()
         case .mixerTable:
             return MixerTableController()
+        case .compactController:
+            return CompactController()
         }
     }
 }
