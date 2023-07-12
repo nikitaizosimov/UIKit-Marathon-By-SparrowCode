@@ -22,6 +22,8 @@
 		7B96247B2A7FB20F0044CE6E /* TransformButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B96247A2A7FB20F0044CE6E /* TransformButton.swift */; };
 		7B96247E2A7FB4CD0044CE6E /* RelatedAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B96247D2A7FB4CD0044CE6E /* RelatedAnimationController.swift */; };
 		7B9624812A7FB6AE0044CE6E /* MixerTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624802A7FB6AE0044CE6E /* MixerTableController.swift */; };
+		7B9624842A7FC1840044CE6E /* CompactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624832A7FC1840044CE6E /* CompactController.swift */; };
+		7B9624872A7FC21B0044CE6E /* CompactPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624862A7FC21B0044CE6E /* CompactPopoverController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		7B96247A2A7FB20F0044CE6E /* TransformButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformButton.swift; sourceTree = "<group>"; };
 		7B96247D2A7FB4CD0044CE6E /* RelatedAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedAnimationController.swift; sourceTree = "<group>"; };
 		7B9624802A7FB6AE0044CE6E /* MixerTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixerTableController.swift; sourceTree = "<group>"; };
+		7B9624832A7FC1840044CE6E /* CompactController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactController.swift; sourceTree = "<group>"; };
+		7B9624862A7FC21B0044CE6E /* CompactPopoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactPopoverController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 				7B9624772A7FB1790044CE6E /* ThreeButton */,
 				7B96247C2A7FB4B00044CE6E /* RelatedAnimation */,
 				7B96247F2A7FB6920044CE6E /* MixerTable */,
+				7B9624822A7FC1770044CE6E /* CompactController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -182,6 +187,23 @@
 			path = MixerTable;
 			sourceTree = "<group>";
 		};
+		7B9624822A7FC1770044CE6E /* CompactController */ = {
+			isa = PBXGroup;
+			children = (
+				7B9624832A7FC1840044CE6E /* CompactController.swift */,
+				7B9624852A7FC2010044CE6E /* Popover */,
+			);
+			path = CompactController;
+			sourceTree = "<group>";
+		};
+		7B9624852A7FC2010044CE6E /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+				7B9624862A7FC21B0044CE6E /* CompactPopoverController.swift */,
+			);
+			path = Popover;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -254,6 +276,7 @@
 			files = (
 				7B9624792A7FB1900044CE6E /* ThreeButtonController.swift in Sources */,
 				7B9624712A7FAE280044CE6E /* UIColor+Extension.swift in Sources */,
+				7B9624872A7FC21B0044CE6E /* CompactPopoverController.swift in Sources */,
 				7B9624502A7E221A0044CE6E /* MainController.swift in Sources */,
 				7B96246B2A7FAD6C0044CE6E /* GradientAndShadowController.swift in Sources */,
 				7B96247B2A7FB20F0044CE6E /* TransformButton.swift in Sources */,
@@ -265,6 +288,7 @@
 				7B96244C2A7E221A0044CE6E /* AppDelegate.swift in Sources */,
 				7B9624692A7FACBF0044CE6E /* Project.swift in Sources */,
 				7B9624742A7FAE410044CE6E /* Gradient.swift in Sources */,
+				7B9624842A7FC1840044CE6E /* CompactController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
