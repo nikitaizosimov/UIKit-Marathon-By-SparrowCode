@@ -14,6 +14,7 @@ enum Project: CaseIterable {
     case relatedAnimation
     case mixerTable
     case compactController
+    case inertialSquare
     
     var name: String {
         switch self {
@@ -27,13 +28,20 @@ enum Project: CaseIterable {
             return "4. Миксер-Таблица"
         case .compactController:
             return "5. Компактный Контроллер"
+        case .inertialSquare:
+            return "6. Инерционный Квадрат"
         }
     }
     
     var description: String {
         switch self {
         case .gradientAndShadow:
-            return "- Закруглить края.\n- Покрасить градиентом.\n- Установить тень.\n- Вью всегда по центру по вертикали и 100pt от левого края)"
+            return """
+                    - Закруглить края.
+                    - Покрасить градиентом.
+                    - Установить тень.
+                    - Вью всегда по центру по вертикали и 100pt от левого края)
+                    """
         case .threeButton:
             return """
                     - Кнопки должны быть адаптивные, под разный текст - разная ширина. Отступ внутри кнопки от контента 10pt по вертикали и 14pt по горизонтали.
@@ -60,7 +68,11 @@ enum Project: CaseIterable {
                     - Кнопка закрыть в правом верхнем углу закрывает контроллер.
                     - Контроллер сверху привязан к центру кнопки треугольничком (см. видео).
                     """
-            
+        case .inertialSquare:
+            return """
+                    - Квадрат должен двигаться как физический объект - если проходит большое расстояние, то есть отскок с инерцией.
+                    - Есть небольшой поворот квадрата при движении в новую точку.
+                    """
         }
     }
     
@@ -76,6 +88,8 @@ enum Project: CaseIterable {
             return MixerTableController()
         case .compactController:
             return CompactController()
+        case .inertialSquare:
+            return InertialSquareController()
         }
     }
 }
