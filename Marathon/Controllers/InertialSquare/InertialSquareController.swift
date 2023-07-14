@@ -41,6 +41,8 @@ final class InertialSquareController: UIViewController {
     // MARK: - SetupViews
     
     private func setupViews() {
+        view.backgroundColor = .white
+        
         view.addSubview(squareView)
         squareView.frame.origin = .init(x: view.bounds.width / 2 - 50, y: view.bounds.height / 2 - 50)
     }
