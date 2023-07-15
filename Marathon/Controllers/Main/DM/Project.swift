@@ -15,6 +15,7 @@ enum Project: CaseIterable {
     case mixerTable
     case compactController
     case inertialSquare
+    case stretchingPicture
     
     var name: String {
         switch self {
@@ -30,6 +31,8 @@ enum Project: CaseIterable {
             return "5. Компактный Контроллер"
         case .inertialSquare:
             return "6. Инерционный Квадрат"
+        case .stretchingPicture:
+            return "7. Растягивающаяся Картинка"
         }
     }
     
@@ -73,6 +76,12 @@ enum Project: CaseIterable {
                     - Квадрат должен двигаться как физический объект - если проходит большое расстояние, то есть отскок с инерцией.
                     - Есть небольшой поворот квадрата при движении в новую точку.
                     """
+        case .stretchingPicture:
+            return """
+                    - Если скролить вниз, то картинка растягивается. Верхний край прикреплен к верхей части экрана.
+                    - Если скролить вверх, картинка уходит наверх вместе со скролом.
+                    - Индикатор скрола (полоска справа) всегда находится ниже картинки и не должен залазить на неё.
+                    """
         }
     }
     
@@ -90,6 +99,8 @@ enum Project: CaseIterable {
             return CompactController()
         case .inertialSquare:
             return InertialSquareController()
+        case .stretchingPicture:
+            return StretchingPictureController()
         }
     }
 }

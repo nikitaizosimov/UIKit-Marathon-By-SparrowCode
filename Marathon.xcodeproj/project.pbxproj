@@ -25,6 +25,7 @@
 		7B9624842A7FC1840044CE6E /* CompactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624832A7FC1840044CE6E /* CompactController.swift */; };
 		7B9624872A7FC21B0044CE6E /* CompactPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624862A7FC21B0044CE6E /* CompactPopoverController.swift */; };
 		7B96248A2A7FE54D0044CE6E /* InertialSquareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624892A7FE54D0044CE6E /* InertialSquareController.swift */; };
+		7B96248D2A7FE6DD0044CE6E /* StretchingPictureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B96248C2A7FE6DD0044CE6E /* StretchingPictureController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		7B9624832A7FC1840044CE6E /* CompactController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactController.swift; sourceTree = "<group>"; };
 		7B9624862A7FC21B0044CE6E /* CompactPopoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactPopoverController.swift; sourceTree = "<group>"; };
 		7B9624892A7FE54D0044CE6E /* InertialSquareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InertialSquareController.swift; sourceTree = "<group>"; };
+		7B96248C2A7FE6DD0044CE6E /* StretchingPictureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchingPictureController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				7B96247F2A7FB6920044CE6E /* MixerTable */,
 				7B9624822A7FC1770044CE6E /* CompactController */,
 				7B9624882A7FE53E0044CE6E /* InertialSquare */,
+				7B96248B2A7FE6D00044CE6E /* StretchingPicture */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -215,6 +218,14 @@
 			path = InertialSquare;
 			sourceTree = "<group>";
 		};
+		7B96248B2A7FE6D00044CE6E /* StretchingPicture */ = {
+			isa = PBXGroup;
+			children = (
+				7B96248C2A7FE6DD0044CE6E /* StretchingPictureController.swift */,
+			);
+			path = StretchingPicture;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -294,6 +305,7 @@
 				7B96248A2A7FE54D0044CE6E /* InertialSquareController.swift in Sources */,
 				7B9624762A7FAE5D0044CE6E /* UIView+Extension.swift in Sources */,
 				7B9624812A7FB6AE0044CE6E /* MixerTableController.swift in Sources */,
+				7B96248D2A7FE6DD0044CE6E /* StretchingPictureController.swift in Sources */,
 				7B9624652A7E43370044CE6E /* MainCollectionCell.swift in Sources */,
 				7B96246E2A7FADF00044CE6E /* SquareView.swift in Sources */,
 				7B96247E2A7FB4CD0044CE6E /* RelatedAnimationController.swift in Sources */,
