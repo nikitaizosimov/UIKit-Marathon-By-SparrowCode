@@ -26,6 +26,7 @@
 		7B9624872A7FC21B0044CE6E /* CompactPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624862A7FC21B0044CE6E /* CompactPopoverController.swift */; };
 		7B96248A2A7FE54D0044CE6E /* InertialSquareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624892A7FE54D0044CE6E /* InertialSquareController.swift */; };
 		7B96248D2A7FE6DD0044CE6E /* StretchingPictureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B96248C2A7FE6DD0044CE6E /* StretchingPictureController.swift */; };
+		7B9624902A7FEBB80044CE6E /* NativeAvatarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B96248F2A7FEBB80044CE6E /* NativeAvatarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		7B9624862A7FC21B0044CE6E /* CompactPopoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactPopoverController.swift; sourceTree = "<group>"; };
 		7B9624892A7FE54D0044CE6E /* InertialSquareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InertialSquareController.swift; sourceTree = "<group>"; };
 		7B96248C2A7FE6DD0044CE6E /* StretchingPictureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchingPictureController.swift; sourceTree = "<group>"; };
+		7B96248F2A7FEBB80044CE6E /* NativeAvatarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAvatarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				7B9624822A7FC1770044CE6E /* CompactController */,
 				7B9624882A7FE53E0044CE6E /* InertialSquare */,
 				7B96248B2A7FE6D00044CE6E /* StretchingPicture */,
+				7B96248E2A7FEA370044CE6E /* NativeAvatar */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -226,6 +229,14 @@
 			path = StretchingPicture;
 			sourceTree = "<group>";
 		};
+		7B96248E2A7FEA370044CE6E /* NativeAvatar */ = {
+			isa = PBXGroup;
+			children = (
+				7B96248F2A7FEBB80044CE6E /* NativeAvatarController.swift */,
+			);
+			path = NativeAvatar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -301,6 +312,7 @@
 				7B9624872A7FC21B0044CE6E /* CompactPopoverController.swift in Sources */,
 				7B9624502A7E221A0044CE6E /* MainController.swift in Sources */,
 				7B96246B2A7FAD6C0044CE6E /* GradientAndShadowController.swift in Sources */,
+				7B9624902A7FEBB80044CE6E /* NativeAvatarController.swift in Sources */,
 				7B96247B2A7FB20F0044CE6E /* TransformButton.swift in Sources */,
 				7B96248A2A7FE54D0044CE6E /* InertialSquareController.swift in Sources */,
 				7B9624762A7FAE5D0044CE6E /* UIView+Extension.swift in Sources */,

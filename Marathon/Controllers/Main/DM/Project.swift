@@ -16,6 +16,7 @@ enum Project: CaseIterable {
     case compactController
     case inertialSquare
     case stretchingPicture
+    case nativeAvatar
     
     var name: String {
         switch self {
@@ -33,6 +34,8 @@ enum Project: CaseIterable {
             return "6. Инерционный Квадрат"
         case .stretchingPicture:
             return "7. Растягивающаяся Картинка"
+        case .nativeAvatar:
+            return "8. Нативный Аватар"
         }
     }
     
@@ -82,6 +85,11 @@ enum Project: CaseIterable {
                     - Если скролить вверх, картинка уходит наверх вместе со скролом.
                     - Индикатор скрола (полоска справа) всегда находится ниже картинки и не должен залазить на неё.
                     """
+        case .nativeAvatar:
+            return """
+                    - Картинка SF Symbols person.crop.circle.fill. Размер 36x36pt.
+                    - Картинка двигается и обрезается вместе с заголовком.
+                    """
         }
     }
     
@@ -101,6 +109,8 @@ enum Project: CaseIterable {
             return InertialSquareController()
         case .stretchingPicture:
             return StretchingPictureController()
+        case .nativeAvatar:
+            return NativeAvatarController()
         }
     }
 }
