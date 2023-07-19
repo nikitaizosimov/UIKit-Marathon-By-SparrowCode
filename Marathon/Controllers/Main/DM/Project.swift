@@ -17,6 +17,7 @@ enum Project: CaseIterable {
     case inertialSquare
     case stretchingPicture
     case nativeAvatar
+    case caringCollection
     
     var name: String {
         switch self {
@@ -36,6 +37,8 @@ enum Project: CaseIterable {
             return "7. Растягивающаяся Картинка"
         case .nativeAvatar:
             return "8. Нативный Аватар"
+        case .caringCollection:
+            return "9. Заботливая Коллекция"
         }
     }
     
@@ -90,6 +93,14 @@ enum Project: CaseIterable {
                     - Картинка SF Symbols person.crop.circle.fill. Размер 36x36pt.
                     - Картинка двигается и обрезается вместе с заголовком.
                     """
+        case .caringCollection:
+            return """
+                    - Коллекция на весь экран.
+                    - Крайняя левая ячейка, которая поместилась целиком на экран, всегда имеет отступ слева на layout margins коллекции.
+                    - Когда отпускаем скрол, ячейки останавливаются по правишу выше.
+                    - Если сделать сильный скрол, коллекция пролетает пару ячеек и останавливается по правилу выше.
+                    - Нельзя использовать UICollectionViewCompositionalLayout.
+                    """
         }
     }
     
@@ -111,6 +122,8 @@ enum Project: CaseIterable {
             return StretchingPictureController()
         case .nativeAvatar:
             return NativeAvatarController()
+        case .caringCollection:
+            return CaringCollectionController()
         }
     }
 }
