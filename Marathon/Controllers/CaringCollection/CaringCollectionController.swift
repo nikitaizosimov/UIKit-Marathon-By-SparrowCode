@@ -33,7 +33,6 @@ final class CaringCollectionController: UIViewController {
         
         view.showsHorizontalScrollIndicator = false
         
-        
         view.dataSource = self
         view.delegate = self
         
