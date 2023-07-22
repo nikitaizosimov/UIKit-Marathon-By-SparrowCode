@@ -94,7 +94,11 @@ extension CaringCollectionController: UICollectionViewDataSource {
 
 extension CaringCollectionController: UICollectionViewDelegate {
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    func scrollViewWillEndDragging(
+        _ scrollView: UIScrollView,
+        withVelocity velocity: CGPoint,
+        targetContentOffset: UnsafeMutablePointer<CGPoint>
+    ) {
         let itemWidth = Self.itemSize.width + Self.itemSpacing
         let contentOffset = targetContentOffset.pointee.x + Self.itemSpacing
         let itemToScroll = round(contentOffset / itemWidth)
