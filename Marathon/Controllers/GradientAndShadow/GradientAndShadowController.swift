@@ -31,10 +31,18 @@ final class GradientAndShadowController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         setupViews()
     }
     
     // MARK: - Setup Views
+    
+    private func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Task",
+            primaryAction: UIAction(handler: { [weak self] _ in self?.openTaskPopover() })
+        )
+    }
     
     private func setupViews() {
         view.backgroundColor = .white
@@ -43,4 +51,25 @@ final class GradientAndShadowController: UIViewController {
         squareView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 100).isActive = true
         squareView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
+    
+    // MARK: - Action
+    
+    private func openTaskPopover() {
+        let controller = TaskPopoverController(text: "23232")
+        
+        controller.modalPresentationStyle = .popover
+        
+        controller.popoverPresentationController?.sourceItem = navigationItem.rightBarButtonItem
+        controller.popoverPresentationController?.permittedArrowDirections = .up
+        controller.popoverPresentationController?.delegate = self
+        
+        present(controller, animated: true)
+    }
+}
+
+extension GradientAndShadowController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(
+        for controller: UIPresentationController,
+        traitCollection: UITraitCollection
+    ) -> UIModalPresentationStyle { .none }
 }
