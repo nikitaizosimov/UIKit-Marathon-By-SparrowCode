@@ -107,7 +107,7 @@ enum Project: CaseIterable {
     var controller: UIViewController {
         switch self {
         case .gradientAndShadow:
-            return GradientAndShadowController()
+            return GradientAndShadowController(project: self)
         case .threeButton:
             return ThreeButtonController()
         case .relatedAnimation:

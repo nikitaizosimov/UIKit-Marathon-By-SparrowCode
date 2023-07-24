@@ -66,10 +66,9 @@ final class TaskPopoverController: UIViewController {
         view.backgroundColor = .systemGray6
         
         view.addSubview(textTitle)
-        textTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
+        textTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
         textTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
         textTitle.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
-        textTitle.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16).isActive = true
         
         view.addSubview(buttonImage)
         buttonImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8).isActive = true

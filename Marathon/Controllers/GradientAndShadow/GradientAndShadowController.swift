@@ -11,6 +11,8 @@ final class GradientAndShadowController: UIViewController {
     
     // MARK: - Properties
     
+    let project: Project
+    
     private static var squareViewSize = CGSize(width: 100, height: 100)
     
     // MARK: - Views
@@ -25,6 +27,18 @@ final class GradientAndShadowController: UIViewController {
         
         return view
     }()
+    
+    // MARK: -  Init
+    
+    init(project pProject: Project) {
+        project = pProject
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     
@@ -55,7 +69,7 @@ final class GradientAndShadowController: UIViewController {
     // MARK: - Action
     
     private func openTaskPopover() {
-        let controller = TaskPopoverController(text: "23232")
+        let controller = TaskPopoverController(text: project.description)
         
         controller.modalPresentationStyle = .popover
         
