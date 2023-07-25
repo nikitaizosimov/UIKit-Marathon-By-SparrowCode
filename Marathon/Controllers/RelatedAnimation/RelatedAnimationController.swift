@@ -11,15 +11,7 @@ class RelatedAnimationController: UIViewController {
     
     // MARK: - Properties
     
-    private static var topOffset: CGFloat = 40
-    
-    private var squareLeftConstraint: NSLayoutConstraint?
-    private var squareWidthConstraint: NSLayoutConstraint?
-    private var squareHeightConstraint: NSLayoutConstraint?
-    
-    private lazy var sliderConfiguration: SliderCalculation = {
-        SliderCalculation(width: view.bounds.width - view.layoutMargins.left - view.layoutMargins.right)
-    }()
+    let animator = UIViewPropertyAnimator(duration: 0.7, curve: .easeOut)
     
     // MARK: - Views
     
@@ -29,34 +21,26 @@ class RelatedAnimationController: UIViewController {
         view.layer.cornerRadius = 12
         view.backgroundColor = .systemBlue
         
-        squareWidthConstraint = view.widthAnchor.constraint(equalToConstant: SliderCalculation.startSquareSize.width)
-        squareWidthConstraint?.isActive = true
-        
-        squareHeightConstraint = view.heightAnchor.constraint(equalToConstant: SliderCalculation.startSquareSize.height)
-        squareHeightConstraint?.isActive = true
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
         return view
     }()
     
     private lazy var sliderView: UISlider = {
         let view = UISlider()
         
-        view.minimumValue = 0
-        view.maximumValue = 100
-        
         view.addAction(
-            UIAction(handler: { [weak self] _ in self?.sliderValueChanged() }),
+            UIAction(handler: { [weak self] _ in
+                self?.animator.fractionComplete = CGFloat(self?.sliderView.value ?? 0)
+            }),
             for: .valueChanged
         )
         
         view.addAction(
-            UIAction(handler: { [weak self] _ in self?.sliderValueDidEnd() }),
-            for: .touchUpInside
+            UIAction(handler: { [weak self] _ in
+                self?.animator.startAnimation()
+                self?.sliderView.value = 1
+            }),
+            for: [.touchUpInside, .touchUpOutside]
         )
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
@@ -67,85 +51,40 @@ class RelatedAnimationController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
+        setupAnimator()
     }
     
-    // MARK: - SetupViews
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        guard squareView.transform == .identity else { return }
+        
+        squareView.frame = .init(x: view.layoutMargins.left, y: 110, width: 80, height: 80)
+        
+        sliderView.sizeToFit()
+        sliderView.frame = .init(
+            x: view.layoutMargins.left,
+            y: squareView.frame.maxY + 44,
+            width: view.frame.width - (view.layoutMargins.left * 2),
+            height: 80
+        )
+    }
+    
+    // MARK: - Setup Views
     
     private func setupViews() {
         view.backgroundColor = .white
         
         view.addSubview(squareView)
-        squareLeftConstraint = squareView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor)
-        NSLayoutConstraint.activate([
-            squareView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Self.topOffset),
-            squareLeftConstraint,
-        ].compactMap { $0 })
-        
         view.addSubview(sliderView)
-        NSLayoutConstraint.activate([
-            sliderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Self.topOffset + SliderCalculation.endSquareSize.height + 20),
-            sliderView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
-            sliderView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
-        ])
     }
     
-    // MARK: - Actions
-    
-    private func sliderValueChanged(with duration: TimeInterval = 0.1) {
-        UIView.animate(
-            withDuration: duration,
-            delay: 0,
-            options: [.beginFromCurrentState, .allowUserInteraction]) { [weak self] in
-                guard let self else { return }
-                
-                squareLeftConstraint?.constant = sliderConfiguration.squareLeftConstaint(from: sliderView.value)
-                
-                let squareSize = sliderConfiguration.squareSize(from: sliderView.value)
-                squareWidthConstraint?.constant = squareSize.width
-                squareHeightConstraint?.constant = squareSize.height
-                
-                squareView.transform = CGAffineTransformMakeRotation(sliderConfiguration.squareRotationAngle(from: sliderView.value))
-                
-                view.layoutIfNeeded()
-            }
-    }
-    
-    private func sliderValueDidEnd() {
-        guard sliderView.value != 0 else { return }
+    private func setupAnimator() {
+        animator.pausesOnCompletion = true
         
-        sliderView.setValue(100, animated: true)
-        sliderValueChanged(with: 0.3)
-    }
-}
-
-extension RelatedAnimationController {
-    
-    struct SliderCalculation {
-        
-        static var startSquareSize = CGSize(width: 80, height: 80)
-        static var endSquareSize = CGSize(width: 120, height: 120)
-        
-        static var startAngle: CGFloat = 0
-        static var endAngle = CGFloat.pi / 2
-        
-        let width: CGFloat
-        
-        func squareLeftConstaint(from value: Float) -> CGFloat {
-            let viewMaxConstaint = width - Self.endSquareSize.width
-            
-            return CGFloat(Float(viewMaxConstaint) / Float(100) * value)
-        }
-        
-        func squareSize(from value: Float) -> CGSize {
-            let rangeMinMax = Float(Self.endSquareSize.width - Self.startSquareSize.width)
-            
-            let width = (rangeMinMax / Float(100) * value) + Float(Self.startSquareSize.width)
-            
-            return .init(width: Int(width), height: Int(width))
-        }
-        
-        func squareRotationAngle(from value: Float) -> Double {
-            Double(Self.endAngle / CGFloat(100) * CGFloat(value))
+        animator.addAnimations {
+            self.squareView.frame.origin.x = self.view.frame.width - (self.view.layoutMargins.right * 2) - self.squareView.frame.width
+            self.squareView.transform = .identity.scaledBy(x: 1.5, y: 1.5).rotated(by: .pi / 2)
         }
     }
 }
