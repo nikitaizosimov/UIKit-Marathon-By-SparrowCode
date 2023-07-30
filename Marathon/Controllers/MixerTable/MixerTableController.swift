@@ -33,9 +33,8 @@ final class MixerTableController: UIViewController {
     // MARK: - Views
     
     private lazy var tableView: UITableView = {
-        let table = UITableView(frame: .zero, style: .plain)
+        let table = UITableView(frame: .zero, style: .insetGrouped)
         
-        table.backgroundColor = .white
         table.layer.cornerRadius = 8
         
         table.dataSource = self
@@ -74,7 +73,7 @@ final class MixerTableController: UIViewController {
         
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 30),
+            tableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
