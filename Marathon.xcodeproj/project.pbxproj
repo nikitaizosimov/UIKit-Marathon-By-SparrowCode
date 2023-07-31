@@ -29,6 +29,7 @@
 		7B9624902A7FEBB80044CE6E /* NativeAvatarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B96248F2A7FEBB80044CE6E /* NativeAvatarController.swift */; };
 		7B9624932A7FF1530044CE6E /* CaringCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624922A7FF1530044CE6E /* CaringCollectionController.swift */; };
 		7B9624962A801B3F0044CE6E /* TaskPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9624952A801B3F0044CE6E /* TaskPopoverController.swift */; };
+		7B9624A02A877BF10044CE6E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B96249F2A877BF10044CE6E /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		7B96248F2A7FEBB80044CE6E /* NativeAvatarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAvatarController.swift; sourceTree = "<group>"; };
 		7B9624922A7FF1530044CE6E /* CaringCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaringCollectionController.swift; sourceTree = "<group>"; };
 		7B9624952A801B3F0044CE6E /* TaskPopoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPopoverController.swift; sourceTree = "<group>"; };
+		7B96249F2A877BF10044CE6E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				7B9624802A7FB6AE0044CE6E /* MixerTableController.swift */,
+				7B96249E2A877BE50044CE6E /* DM */,
 			);
 			path = MixerTable;
 			sourceTree = "<group>";
@@ -257,6 +260,14 @@
 				7B9624952A801B3F0044CE6E /* TaskPopoverController.swift */,
 			);
 			path = Controls;
+			sourceTree = "<group>";
+		};
+		7B96249E2A877BE50044CE6E /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				7B96249F2A877BF10044CE6E /* Item.swift */,
+			);
+			path = DM;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,6 +344,7 @@
 				7B9624712A7FAE280044CE6E /* UIColor+Extension.swift in Sources */,
 				7B9624872A7FC21B0044CE6E /* CompactPopoverController.swift in Sources */,
 				7B9624502A7E221A0044CE6E /* MainController.swift in Sources */,
+				7B9624A02A877BF10044CE6E /* Item.swift in Sources */,
 				7B9624962A801B3F0044CE6E /* TaskPopoverController.swift in Sources */,
 				7B96246B2A7FAD6C0044CE6E /* GradientAndShadowController.swift in Sources */,
 				7B9624902A7FEBB80044CE6E /* NativeAvatarController.swift in Sources */,
