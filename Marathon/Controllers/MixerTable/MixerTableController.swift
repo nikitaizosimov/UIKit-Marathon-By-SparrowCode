@@ -88,32 +88,12 @@ final class MixerTableController: UIViewController {
     }
     
     @objc
-    func shuffle() {
+    private func shuffle() {
         itemsList.shuffle()
         
         tableView.beginUpdates()
         itemsList.indices.forEach { tableView.reloadRows(at: [IndexPath(row: $0, section: 0)], with: .bottom) }
         tableView.endUpdates()
-    }
-}
-
-// MARK: - UITableViewDataSource
-
-extension MixerTableController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        itemsList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Self.cellIdentifier, for: indexPath)
-        
-        let item = itemsList[indexPath.row]
-        
-        cell.textLabel?.text = item.text
-        cell.accessoryType = item.isSelected ? .checkmark : .none
-        
-        return cell
     }
 }
 
