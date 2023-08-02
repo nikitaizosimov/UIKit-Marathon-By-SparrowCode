@@ -33,6 +33,7 @@ final class MixerTableController: UIViewController {
         
         table.layer.cornerRadius = 8
         
+        table.delegate = self
         table.register(UITableViewCell.self, forCellReuseIdentifier: Self.cellIdentifier)
         
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -56,11 +57,9 @@ final class MixerTableController: UIViewController {
     private func setupNavigation() {
         title = "Task 4"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
+        navigationItem.rightBarButtonItem = .init(
             title: "Shuffle",
-            style: .plain,
-            target: self,
-            action: #selector(shuffle)
+            primaryAction: .init(handler: { [weak self] _ in self?.shuffle() })
         )
     }
     
@@ -90,35 +89,32 @@ final class MixerTableController: UIViewController {
     @objc
     private func shuffle() {
         itemsList.shuffle()
-        
-        tableView.beginUpdates()
-        itemsList.indices.forEach { tableView.reloadRows(at: [IndexPath(row: $0, section: 0)], with: .bottom) }
-        tableView.endUpdates()
+        updateData(itemsList, animated: true)
     }
 }
 
 // MARK: - UITableViewDelegate
 
 extension MixerTableController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        
-        itemsList[indexPath.row].toggleSelect()
-        
-        guard itemsList[indexPath.row].isSelected else {
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-            return
-        }
-        
-        cell.accessoryType = .checkmark
-        
-        let item = itemsList[indexPath.row]
-        itemsList.remove(at: indexPath.row)
-        itemsList.insert(item, at: 0)
-        
-        tableView.moveRow(at: indexPath, to: IndexPath(row: 0, section: 0))
-    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//
+//        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+//
+//        itemsList[indexPath.row].toggleSelect()
+//
+//        guard itemsList[indexPath.row].isSelected else {
+//            tableView.reloadRows(at: [indexPath], with: .automatic)
+//            return
+//        }
+//
+//        cell.accessoryType = .checkmark
+//
+//        let item = itemsList[indexPath.row]
+//        itemsList.remove(at: indexPath.row)
+//        itemsList.insert(item, at: 0)
+//
+//        tableView.moveRow(at: indexPath, to: IndexPath(row: 0, section: 0))
+//    }
 }
