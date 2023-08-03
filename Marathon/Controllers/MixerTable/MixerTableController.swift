@@ -96,10 +96,10 @@ final class MixerTableController: UIViewController {
 // MARK: - UITableViewDelegate
 
 extension MixerTableController: UITableViewDelegate {
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
 //        guard let cell = tableView.cellForRow(at: indexPath) else { return }
 //
 //        itemsList[indexPath.row].toggleSelect()
@@ -116,5 +116,5 @@ extension MixerTableController: UITableViewDelegate {
 //        itemsList.insert(item, at: 0)
 //
 //        tableView.moveRow(at: indexPath, to: IndexPath(row: 0, section: 0))
-//    }
+    }
 }
