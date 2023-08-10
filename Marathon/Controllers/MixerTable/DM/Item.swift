@@ -9,7 +9,7 @@ import Foundation
 
 struct Item: Hashable {
     
-    let id = UUID()
+    let id: String = UUID().uuidString
     let text: String
     private(set) var isSelected: Bool = false
     
@@ -18,10 +18,14 @@ struct Item: Hashable {
     }
     
     func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
         hasher.combine(self.text)
+        hasher.combine(self.isSelected)
     }
     
     static func == (lhs: Self, rhs: Self) -> Bool {
-        return lhs.id == rhs.id
+        lhs.id == rhs.id &&
+        lhs.text == rhs.text &&
+        lhs.isSelected == rhs.isSelected
     }
 }

@@ -13,14 +13,16 @@ final class MixerTableController: UIViewController {
     
     private static let cellIdentifier = "UITableViewCell"
     
-    private var itemsList: [Item] = Array(0...30).map { Item(text: String($0)) }
+    private var dataList: [String] = Array(0...30).map { String($0) }
     
-    private lazy var dataSource: UITableViewDiffableDataSource<String, Item> = {
-        UITableViewDiffableDataSource<String, Item>(tableView: tableView) { tableView, indexPath, item in
-            let cell = tableView.dequeueReusableCell(withIdentifier: Self.cellIdentifier, for: indexPath)
+    private var selected = [String]()
+    
+    private lazy var dataSource: UITableViewDiffableDataSource<String, String> = {
+        UITableViewDiffableDataSource<String, String>(tableView: tableView) { tableView, indexPath, itemIdentifier in
+            let cell = tableView.dequeueReusableCell(withIdentifier: Self.cellIdentifier)
             
-            cell.textLabel?.text = item.text
-            cell.accessoryType = item.isSelected ? .checkmark : .none
+            cell?.textLabel?.text = itemIdentifier
+            cell?.accessoryType = self.selected.contains(itemIdentifier) ? .checkmark : .none
             
             return cell
         }
@@ -49,7 +51,7 @@ final class MixerTableController: UIViewController {
         setupNavigation()
         setupViews()
         
-        updateData(itemsList)
+        updateData(dataList)
     }
     
     // MARK: - Setup Views
@@ -77,44 +79,44 @@ final class MixerTableController: UIViewController {
     
     // MARK: - Actions
     
-    private func updateData(_ itemList: [Item], animated: Bool = false) {
-        var snapshot = NSDiffableDataSourceSnapshot<String, Item>()
+    private func updateData(_ dataList: [String], animated: Bool = false) {
+        var snapshot = NSDiffableDataSourceSnapshot<String, String>()
         
         snapshot.appendSections(["first"])
-        snapshot.appendItems(itemList, toSection: "first")
+        snapshot.appendItems(dataList, toSection: "first")
         
         dataSource.apply(snapshot, animatingDifferences: animated)
     }
     
     @objc
     private func shuffle() {
-        itemsList.shuffle()
-        updateData(itemsList, animated: true)
+        updateData(dataList.shuffled(), animated: true)
     }
 }
 
 // MARK: - UITableViewDelegate
 
 extension MixerTableController: UITableViewDelegate {
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-//        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-//
-//        itemsList[indexPath.row].toggleSelect()
-//
-//        guard itemsList[indexPath.row].isSelected else {
-//            tableView.reloadRows(at: [indexPath], with: .automatic)
-//            return
-//        }
-//
-//        cell.accessoryType = .checkmark
-//
-//        let item = itemsList[indexPath.row]
-//        itemsList.remove(at: indexPath.row)
-//        itemsList.insert(item, at: 0)
-//
-//        tableView.moveRow(at: indexPath, to: IndexPath(row: 0, section: 0))
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        
+        if selected.contains(item) {
+            selected = selected.filter { $0 != item }
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+            return
+        } else {
+            selected.append(item)
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        }
+        
+        guard let first = dataSource.snapshot().itemIdentifiers.first,
+              first != item else { return }
+        
+        var snapshot = dataSource.snapshot()
+        snapshot.moveItem(item, beforeItem: first)
+        dataSource.apply(snapshot)
     }
 }
