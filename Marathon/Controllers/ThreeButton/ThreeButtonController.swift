@@ -11,6 +11,8 @@ final class ThreeButtonController: UIViewController {
     
     // MARK: - Properties
     
+    private let project: Project
+    
     private static var sideOffset: CGFloat = 16
     
     // MARK: - Views
@@ -37,15 +39,37 @@ final class ThreeButtonController: UIViewController {
     
     private lazy var thirdButton: UIButton = { configureButton(title: "Third", needAction: true) }()
     
+    // MARK: -  Init
+    
+    init(project pProject: Project) {
+        project = pProject
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
+        setupNavigationBar()
     }
     
     // MARK: - Setup Views
+    
+    // MARK: - Setup Views
+    
+    private func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Task",
+            primaryAction: UIAction(handler: { [weak self] _ in self?.openTaskPopover() })
+        )
+    }
     
     private func setupViews() {
         view.backgroundColor = .white
@@ -76,6 +100,18 @@ final class ThreeButtonController: UIViewController {
     private func openModalScreen() {
         let controller = UIViewController()
         controller.view.backgroundColor = .white
+        
+        present(controller, animated: true)
+    }
+    
+    private func openTaskPopover() {
+        let controller = TaskPopoverController(text: project.description)
+        
+        controller.modalPresentationStyle = .popover
+        
+        controller.popoverPresentationController?.sourceItem = navigationItem.rightBarButtonItem
+        controller.popoverPresentationController?.permittedArrowDirections = .up
+        controller.popoverPresentationController?.delegate = self
         
         present(controller, animated: true)
     }
@@ -110,4 +146,11 @@ private extension UIButton {
             button.configuration?.baseForegroundColor = .white
         }
     }
+}
+
+extension ThreeButtonController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(
+        for controller: UIPresentationController,
+        traitCollection: UITraitCollection
+    ) -> UIModalPresentationStyle { .none }
 }

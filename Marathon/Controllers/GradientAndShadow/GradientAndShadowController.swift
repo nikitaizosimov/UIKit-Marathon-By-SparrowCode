@@ -11,7 +11,7 @@ final class GradientAndShadowController: UIViewController {
     
     // MARK: - Properties
     
-    let project: Project
+    private let project: Project
     
     private static var squareViewSize = CGSize(width: 100, height: 100)
     
