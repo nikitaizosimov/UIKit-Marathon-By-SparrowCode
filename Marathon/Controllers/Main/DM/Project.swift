@@ -111,7 +111,7 @@ enum Project: CaseIterable {
         case .threeButton:
             return ThreeButtonController(project: self)
         case .relatedAnimation:
-            return RelatedAnimationController()
+            return RelatedAnimationController(project: self)
         case .mixerTable:
             return MixerTableController()
         case .compactController:

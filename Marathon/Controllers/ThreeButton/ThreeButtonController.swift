@@ -62,8 +62,6 @@ final class ThreeButtonController: UIViewController {
     
     // MARK: - Setup Views
     
-    // MARK: - Setup Views
-    
     private func setupNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Task",
