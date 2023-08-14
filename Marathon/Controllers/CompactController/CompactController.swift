@@ -9,6 +9,10 @@ import UIKit
 
 final class CompactController: UIViewController {
     
+    // MARK: - Properties
+    
+    private let project: Project
+    
     // MARK: -  Views
     
     private lazy var buttonLabel: UIButton = {
@@ -24,16 +28,36 @@ final class CompactController: UIViewController {
         return button
     }()
     
+    // MARK: -  Init
+    
+    init(project pProject: Project) {
+        project = pProject
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        setupNavigationBar()
         setupViews()
     }
     
     // MARK: - Setup Views
+    
+    private func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Task",
+            primaryAction: UIAction(handler: { [weak self] _ in self?.openTaskPopover() })
+        )
+    }
     
     private func setupViews() {
         view.backgroundColor = .white
@@ -51,6 +75,18 @@ final class CompactController: UIViewController {
         controller.modalPresentationStyle = .popover
         
         controller.popoverPresentationController?.sourceView = buttonLabel
+        controller.popoverPresentationController?.permittedArrowDirections = .up
+        controller.popoverPresentationController?.delegate = self
+        
+        present(controller, animated: true)
+    }
+    
+    private func openTaskPopover() {
+        let controller = TaskPopoverController(text: project.description)
+        
+        controller.modalPresentationStyle = .popover
+        
+        controller.popoverPresentationController?.sourceItem = navigationItem.rightBarButtonItem
         controller.popoverPresentationController?.permittedArrowDirections = .up
         controller.popoverPresentationController?.delegate = self
         

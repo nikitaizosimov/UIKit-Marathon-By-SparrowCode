@@ -113,9 +113,9 @@ enum Project: CaseIterable {
         case .relatedAnimation:
             return RelatedAnimationController(project: self)
         case .mixerTable:
-            return MixerTableController()
+            return MixerTableController(project: self)
         case .compactController:
-            return CompactController()
+            return CompactController(project: self)
         case .inertialSquare:
             return InertialSquareController()
         case .stretchingPicture:

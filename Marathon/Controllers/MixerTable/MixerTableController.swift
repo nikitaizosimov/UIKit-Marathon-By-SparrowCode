@@ -11,6 +11,8 @@ final class MixerTableController: UIViewController {
     
     // MARK: - Properties
     
+    private let project: Project
+    
     private static let cellIdentifier = "UITableViewCell"
     
     private var dataList: [String] = Array(0...30).map { String($0) }
@@ -43,6 +45,18 @@ final class MixerTableController: UIViewController {
         return table
     }()
     
+    // MARK: -  Init
+    
+    init(project pProject: Project) {
+        project = pProject
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -62,6 +76,11 @@ final class MixerTableController: UIViewController {
         navigationItem.rightBarButtonItem = .init(
             title: "Shuffle",
             primaryAction: .init(handler: { [weak self] _ in self?.shuffle() })
+        )
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            title: "Task",
+            primaryAction: UIAction(handler: { [weak self] _ in self?.openTaskPopover() })
         )
     }
     
@@ -92,6 +111,18 @@ final class MixerTableController: UIViewController {
     private func shuffle() {
         updateData(dataList.shuffled(), animated: true)
     }
+    
+    private func openTaskPopover() {
+        let controller = TaskPopoverController(text: project.description)
+        
+        controller.modalPresentationStyle = .popover
+        
+        controller.popoverPresentationController?.sourceItem = navigationItem.leftBarButtonItem
+        controller.popoverPresentationController?.permittedArrowDirections = .up
+        controller.popoverPresentationController?.delegate = self
+        
+        present(controller, animated: true)
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -119,4 +150,13 @@ extension MixerTableController: UITableViewDelegate {
         snapshot.moveItem(item, beforeItem: first)
         dataSource.apply(snapshot)
     }
+}
+
+// MARK: - UIPopoverPresentationControllerDelegate
+
+extension MixerTableController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(
+        for controller: UIPresentationController,
+        traitCollection: UITraitCollection
+    ) -> UIModalPresentationStyle { .none }
 }
