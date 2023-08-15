@@ -73,15 +73,16 @@ final class MixerTableController: UIViewController {
     private func setupNavigation() {
         title = "Task 4"
         
-        navigationItem.rightBarButtonItem = .init(
-            title: "Shuffle",
-            primaryAction: .init(handler: { [weak self] _ in self?.shuffle() })
-        )
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: "Task",
-            primaryAction: UIAction(handler: { [weak self] _ in self?.openTaskPopover() })
-        )
+        navigationItem.rightBarButtonItems = [
+            .init(
+                title: "Task",
+                primaryAction: UIAction(handler: { [weak self] _ in self?.openTaskPopover() })
+            ),
+            .init(
+                title: "Shuffle",
+                primaryAction: .init(handler: { [weak self] _ in self?.shuffle() })
+            )
+        ]
     }
     
     private func setupViews() {
@@ -117,7 +118,7 @@ final class MixerTableController: UIViewController {
         
         controller.modalPresentationStyle = .popover
         
-        controller.popoverPresentationController?.sourceItem = navigationItem.leftBarButtonItem
+        controller.popoverPresentationController?.sourceItem = navigationItem.rightBarButtonItem
         controller.popoverPresentationController?.permittedArrowDirections = .up
         controller.popoverPresentationController?.delegate = self
         
