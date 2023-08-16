@@ -9,6 +9,10 @@ import UIKit
 
 final class InertialSquareController: UIViewController {
     
+    // MARK: - Properties
+    
+    private let project: Project
+    
     // MARK: - Views
     
     private lazy var squareView: UIView = {
@@ -24,11 +28,24 @@ final class InertialSquareController: UIViewController {
     
     private lazy var animator = UIDynamicAnimator(referenceView: view)
     
+    // MARK: -  Init
+    
+    init(project pProject: Project) {
+        project = pProject
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         setupViews()
     }
     
@@ -39,6 +56,13 @@ final class InertialSquareController: UIViewController {
     }
     
     // MARK: - SetupViews
+    
+    private func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Task",
+            primaryAction: UIAction(handler: { [weak self] _ in self?.openTaskPopover() })
+        )
+    }
     
     private func setupViews() {
         view.backgroundColor = .white
@@ -52,13 +76,28 @@ final class InertialSquareController: UIViewController {
     private func animateSquare(with location: CGPoint) {
         animator.removeAllBehaviors()
         
-        let attachmentBehavior = UIAttachmentBehavior(item: squareView, attachedToAnchor: location)
-        attachmentBehavior.length = 0
-        attachmentBehavior.damping = 0.8
-        attachmentBehavior.frequency = 1
-        animator.addBehavior(attachmentBehavior)
-        
         let snapBehavior = UISnapBehavior(item: squareView, snapTo: location)
+        snapBehavior.damping = 0.9
+        
         animator.addBehavior(snapBehavior)
     }
+    
+    private func openTaskPopover() {
+        let controller = TaskPopoverController(text: project.description)
+        
+        controller.modalPresentationStyle = .popover
+        
+        controller.popoverPresentationController?.sourceItem = navigationItem.rightBarButtonItem
+        controller.popoverPresentationController?.permittedArrowDirections = .up
+        controller.popoverPresentationController?.delegate = self
+        
+        present(controller, animated: true)
+    }
+}
+
+extension InertialSquareController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(
+        for controller: UIPresentationController,
+        traitCollection: UITraitCollection
+    ) -> UIModalPresentationStyle { .none }
 }
