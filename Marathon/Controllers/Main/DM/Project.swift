@@ -119,7 +119,7 @@ enum Project: CaseIterable {
         case .inertialSquare:
             return InertialSquareController(project: self)
         case .stretchingPicture:
-            return StretchingPictureController()
+            return StretchingPictureController(project: self)
         case .nativeAvatar:
             return NativeAvatarController()
         case .caringCollection:

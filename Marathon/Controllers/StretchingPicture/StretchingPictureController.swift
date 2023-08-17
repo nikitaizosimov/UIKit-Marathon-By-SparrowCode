@@ -11,6 +11,8 @@ final class StretchingPictureController: UIViewController {
     
     // MARK: - Properties
     
+    private let project: Project
+    
     private static var defaultImageHeight: CGFloat = 270
     
     // MARK: - Views
@@ -32,6 +34,18 @@ final class StretchingPictureController: UIViewController {
         return view
     }()
     
+    // MARK: -  Init
+    
+    init(project pProject: Project) {
+        project = pProject
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Life Cycle
     
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
@@ -41,6 +55,7 @@ final class StretchingPictureController: UIViewController {
         
         view.backgroundColor = .white
         
+        setupNavigationBar()
         setupViews()
     }
     
@@ -58,9 +73,28 @@ final class StretchingPictureController: UIViewController {
     
     // MARK: - Setup Views
     
+    private func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Task",
+            primaryAction: UIAction(handler: { [weak self] _ in self?.openTaskPopover() })
+        )
+    }
+    
     func setupViews() {
         view.addSubview(scrollView)
         scrollView.addSubview(imageView)
+    }
+    
+    private func openTaskPopover() {
+        let controller = TaskPopoverController(text: project.description)
+        
+        controller.modalPresentationStyle = .popover
+        
+        controller.popoverPresentationController?.sourceItem = navigationItem.rightBarButtonItem
+        controller.popoverPresentationController?.permittedArrowDirections = .up
+        controller.popoverPresentationController?.delegate = self
+        
+        present(controller, animated: true)
     }
 }
 
@@ -77,4 +111,13 @@ extension StretchingPictureController: UIScrollViewDelegate {
         
         scrollView.verticalScrollIndicatorInsets.top = imageView.frame.height - scrollView.safeAreaInsets.top
     }
+}
+
+// MARK: - UIPopoverPresentationControllerDelegate
+//
+extension StretchingPictureController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(
+        for controller: UIPresentationController,
+        traitCollection: UITraitCollection
+    ) -> UIModalPresentationStyle { .none }
 }
