@@ -85,6 +85,8 @@ final class StretchingPictureController: UIViewController {
         scrollView.addSubview(imageView)
     }
     
+    // MARK: - Actions
+    
     private func openTaskPopover() {
         let controller = TaskPopoverController(text: project.description)
         
@@ -114,7 +116,7 @@ extension StretchingPictureController: UIScrollViewDelegate {
 }
 
 // MARK: - UIPopoverPresentationControllerDelegate
-//
+
 extension StretchingPictureController: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(
         for controller: UIPresentationController,
