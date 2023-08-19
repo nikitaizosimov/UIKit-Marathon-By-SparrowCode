@@ -123,7 +123,7 @@ enum Project: CaseIterable {
         case .nativeAvatar:
             return NativeAvatarController(project: self)
         case .caringCollection:
-            return CaringCollectionController()
+            return CaringCollectionController(project: self)
         }
     }
 }

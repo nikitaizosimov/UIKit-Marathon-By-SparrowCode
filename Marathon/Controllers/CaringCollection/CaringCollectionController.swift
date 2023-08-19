@@ -11,6 +11,8 @@ final class CaringCollectionController: UIViewController {
     
     // MARK: - Properties
     
+    private let project: Project
+    
     private static let itemSize: CGSize = .init(width: 300, height: 400)
     private static let itemSpacing: CGFloat = 16
     
@@ -43,6 +45,18 @@ final class CaringCollectionController: UIViewController {
         return view
     }()
     
+    // MARK: -  Init
+    
+    init(project pProject: Project) {
+        project = pProject
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -57,6 +71,11 @@ final class CaringCollectionController: UIViewController {
     private func setupNavigation() {
         title = "Collection"
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Task",
+            primaryAction: UIAction(handler: { [weak self] _ in self?.openTaskPopover() })
+        )
     }
     
     private func setupViews() {
@@ -71,6 +90,20 @@ final class CaringCollectionController: UIViewController {
         ])
         
         collectionViewLayout.sectionInset.left = collectionView.layoutMargins.left
+    }
+    
+    // MARK: - Actions
+    
+    private func openTaskPopover() {
+        let controller = TaskPopoverController(text: project.description)
+        
+        controller.modalPresentationStyle = .popover
+        
+        controller.popoverPresentationController?.sourceItem = navigationItem.rightBarButtonItem
+        controller.popoverPresentationController?.permittedArrowDirections = .up
+        controller.popoverPresentationController?.delegate = self
+        
+        present(controller, animated: true)
     }
 }
 
@@ -106,4 +139,13 @@ extension CaringCollectionController: UICollectionViewDelegate {
         targetContentOffset.pointee = CGPoint(x: itemToScroll * itemWidth - scrollView.contentInset.left,
                                               y: scrollView.contentInset.top)
     }
+}
+
+// MARK: - UIPopoverPresentationControllerDelegate
+
+extension CaringCollectionController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(
+        for controller: UIPresentationController,
+        traitCollection: UITraitCollection
+    ) -> UIModalPresentationStyle { .none }
 }
