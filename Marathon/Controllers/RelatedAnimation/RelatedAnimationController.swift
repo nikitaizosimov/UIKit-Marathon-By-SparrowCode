@@ -85,6 +85,15 @@ class RelatedAnimationController: UIViewController {
         )
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        animator.stopAnimation(true)
+        
+        if animator.state != .inactive {
+            animator.finishAnimation(at: .current)
+        }
+    }
+    
     // MARK: - Setup Views
     
     private func setupNavigationBar() {
